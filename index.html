@@ -1,1 +1,435 @@
-. 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fransızca Öğrenme Asistanı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col font-sans">
+
+    <!-- Üst Bar ve İlerleme Durumu -->
+    <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🇫🇷</span>
+                <div>
+                    <h1 class="font-bold text-lg leading-none">Fransızca Öğren</h1>
+                    <span class="text-xs text-slate-400">Türkçe ➔ Fransızca</span>
+                </div>
+            </div>
+
+            <!-- İstatistikler -->
+            <div class="flex items-center gap-4 text-sm font-semibold">
+                <div class="flex items-center gap-1 text-amber-400 bg-slate-900 px-3 py-1.5 rounded-full border border-slate-700" title="Gün Serisi">
+                    <i class="fa-solid fa-fire text-amber-500"></i>
+                    <span id="streak-count">0</span> Gün
+                </div>
+                <div class="flex items-center gap-1 text-emerald-400 bg-slate-900 px-3 py-1.5 rounded-full border border-slate-700" title="Toplam Puan">
+                    <i class="fa-solid fa-bolt text-emerald-500"></i>
+                    <span id="xp-count">0</span> XP
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="max-w-4xl mx-auto px-4 py-6 flex-1 w-full space-y-6">
+
+        <!-- Günün Kelimesi Kartı -->
+        <div id="daily-word-card" class="bg-gradient-to-r from-blue-900/60 to-indigo-900/60 border border-indigo-500/30 rounded-2xl p-5 shadow-xl relative overflow-hidden">
+            <div class="flex justify-between items-start mb-2">
+                <span class="text-xs uppercase font-bold tracking-wider text-indigo-300 bg-indigo-950/80 px-2.5 py-1 rounded-md border border-indigo-800">
+                    Günün Fransızca Kelimesi
+                </span>
+                <button onclick="speakText(document.getElementById('daily-fr').innerText)" class="text-indigo-300 hover:text-white transition">
+                    <i class="fa-solid fa-volume-high text-lg"></i>
+                </button>
+            </div>
+            <div class="mt-3">
+                <h2 id="daily-fr" class="text-3xl font-extrabold text-white">Yükleniyor...</h2>
+                <p id="daily-tr" class="text-lg text-slate-300 mt-1">...</p>
+                <p id="daily-example" class="text-sm text-indigo-200/80 italic mt-2">...</p>
+            </div>
+        </div>
+
+        <!-- Mod Seçenekleri -->
+        <div class="flex gap-2 border-b border-slate-800 pb-2 overflow-x-auto">
+            <button onclick="switchTab('cards')" id="tab-cards" class="tab-btn bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2">
+                <i class="fa-solid fa-clone"></i> Kelime Kartları
+            </button>
+            <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn bg-slate-800 text-slate-400 hover:text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2">
+                <i class="fa-solid fa-circle-question"></i> Test & Alıştırma
+            </button>
+            <button onclick="switchTab('dictionary')" id="tab-dictionary" class="tab-btn bg-slate-800 text-slate-400 hover:text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2">
+                <i class="fa-solid fa-book"></i> Sözlük
+            </button>
+        </div>
+
+        <!-- SEKMELER -->
+
+        <!-- 1. KELİME KARTLARI MODU -->
+        <section id="section-cards" class="space-y-4">
+            <!-- Kategori Seçimi -->
+            <div class="flex justify-between items-center">
+                <label for="category-select" class="text-sm text-slate-400">Kategori Seçin:</label>
+                <select id="category-select" onchange="changeCategory()" class="bg-slate-800 border border-slate-700 text-slate-200 text-sm rounded-xl px-3 py-2 focus:outline-none focus:border-indigo-500">
+                </select>
+            </div>
+
+            <!-- Çevrilebilir Kart -->
+            <div class="perspective-1000 w-full h-64 cursor-pointer my-6" onclick="flipCard()">
+                <div id="flashcard" class="relative w-full h-full duration-500 transform-style-3d bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl flex items-center justify-center p-6 text-center">
+                    <!-- Ön Yüz (Fransızca) -->
+                    <div class="absolute inset-0 backface-hidden flex flex-col items-center justify-center p-6">
+                        <span class="text-xs text-indigo-400 font-semibold mb-2">FRANSIZCA (Tıkla ve Çevir)</span>
+                        <h3 id="card-fr" class="text-4xl font-extrabold text-white mb-2">---</h3>
+                        <p id="card-phonetic" class="text-sm text-slate-400 italic mb-4">[/.../]</p>
+                        <button onclick="event.stopPropagation(); speakText(document.getElementById('card-fr').innerText)" class="p-3 bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white rounded-full transition">
+                            <i class="fa-solid fa-volume-high text-xl"></i>
+                        </button>
+                    </div>
+                    <!-- Arka Yüz (Türkçe) -->
+                    <div class="absolute inset-0 backface-hidden rotate-y-180 flex flex-col items-center justify-center p-6 bg-slate-800/95 rounded-2xl">
+                        <span class="text-xs text-emerald-400 font-semibold mb-2">TÜRKÇE KARŞILIĞI</span>
+                        <h3 id="card-tr" class="text-3xl font-bold text-slate-100 mb-3">---</h3>
+                        <p id="card-example-fr" class="text-sm text-slate-300 font-medium italic"></p>
+                        <p id="card-example-tr" class="text-xs text-slate-400 mt-1"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kart Navigasyonu -->
+            <div class="flex items-center justify-between gap-4">
+                <button onclick="prevCard()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 py-3 rounded-xl font-semibold transition border border-slate-700">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Önceki
+                </button>
+                <span id="card-indicator" class="text-xs text-slate-400 font-mono">0 / 0</span>
+                <button onclick="nextCard()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-xl font-semibold transition">
+                    Sonraki <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- 2. TEST MODU -->
+        <section id="section-quiz" class="hidden space-y-4">
+            <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Test Modu (+10 XP)</span>
+                    <button onclick="speakText(document.getElementById('quiz-question').innerText)" class="text-slate-400 hover:text-white">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                </div>
+                <h3 id="quiz-question" class="text-2xl font-bold text-white mb-6">Soru yükleniyor...</h3>
+
+                <div id="quiz-options" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <!-- Seçenekler JS ile dolacak -->
+                </div>
+
+                <div id="quiz-feedback" class="mt-4 p-3 rounded-xl text-center font-semibold hidden"></div>
+            </div>
+        </section>
+
+        <!-- 3. SÖZLÜK MODU -->
+        <section id="section-dictionary" class="hidden space-y-4">
+            <input type="text" id="dict-search" oninput="filterDictionary()" placeholder="Kelime ara (Türkçe veya Fransızca)..." class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500">
+
+            <div id="dict-list" class="space-y-2 max-h-96 overflow-y-auto pr-1">
+                <!-- Kelimeler JS ile yüklenecek -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
+        Fransızca Öğrenme Asistanı &bull; Çevrimdışı ve Yerel İlerleme Kaydı
+    </footer>
+
+    <script>
+        // Varsayılan Veri Yapısı (JSON yüklenemezse yedek olarak çalışır)
+        let appData = {
+            gunun_kelimesi: { fr: "Bonjour", tr: "Merhaba", example: "Bonjour, comment ça va?" },
+            kategoriler: [
+                {
+                    id: "temel",
+                    isim: "Temel Selamlaşma",
+                    kelimeler: [
+                        { fr: "Bonjour", tr: "Merhaba / İyi günler", phonetic: "bonjur", example_fr: "Bonjour mon ami!", example_tr: "Merhaba arkadaşım!" },
+                        { fr: "Merci", tr: "Teşekkür ederim", phonetic: "mersi", example_fr: "Merci beaucoup.", example_tr: "Çok teşekkür ederim." },
+                        { fr: "S'il vous plaît", tr: "Lütfen", phonetic: "sil vu ple", example_fr: "Un café, s'il vous plaît.", example_tr: "Bir kahve, lütfen." },
+                        { fr: "Au revoir", tr: "Hoşça kal", phonetic: "o rvuar", example_fr: "Au revoir et à bientôt!", example_tr: "Hoşça kal ve yakında görüşürüz!" },
+                        { fr: "Oui", tr: "Evet", phonetic: "vi", example_fr: "Oui, je comprends.", example_tr: "Evet, anlıyorum." },
+                        { fr: "Non", tr: "Hayır", phonetic: "no", example_fr: "Non, merci.", example_tr: "Hayır, teşekkürler." }
+                    ]
+                }
+            ]
+        };
+
+        // Kullanıcı Durumu
+        let userState = {
+            xp: 0,
+            streak: 1,
+            lastVisit: new Date().toDateString(),
+            currentCategoryIndex: 0,
+            currentCardIndex: 0
+        };
+
+        let currentQuizCorrectAnswer = "";
+
+        // Sayfa Yüklendiğinde
+        window.onload = function() {
+            loadUserState();
+            fetchData();
+        };
+
+        // JSON Verisini Çekme
+        function fetchData() {
+            fetch('data.json')
+                .then(res => res.json())
+                .then(data => {
+                    appData = data;
+                    initApp();
+                })
+                .catch(err => {
+                    console.log('data.json yüklenemedi, varsayılan veri kullanılıyor.');
+                    initApp();
+                });
+        }
+
+        // Uygulamayı Başlatma
+        function initApp() {
+            updateStatsUI();
+            setupDailyWord();
+            setupCategorySelect();
+            showCurrentCard();
+            generateQuiz();
+            renderDictionary();
+        }
+
+        // Kullanıcı İlerlemesini Yükleme (localStorage)
+        function loadUserState() {
+            const saved = localStorage.getItem('fr_learning_user');
+            if (saved) {
+                userState = JSON.parse(saved);
+                
+                // Gün Serisi Kontrolü
+                const today = new Date().toDateString();
+                if (userState.lastVisit !== today) {
+                    const yesterday = new Date();
+                    yesterday.setDate(yesterday.getDate() - 1);
+                    if (userState.lastVisit === yesterday.toDateString()) {
+                        userState.streak += 1;
+                    } else {
+                        userState.streak = 1;
+                    }
+                    userState.lastVisit = today;
+                    saveUserState();
+                }
+            }
+        }
+
+        function saveUserState() {
+            localStorage.setItem('fr_learning_user', JSON.stringify(userState));
+            updateStatsUI();
+        }
+
+        function addXP(amount) {
+            userState.xp += amount;
+            saveUserState();
+        }
+
+        function updateStatsUI() {
+            document.getElementById('xp-count').innerText = userState.xp;
+            document.getElementById('streak-count').innerText = userState.streak;
+        }
+
+        // Günün Kelimesi
+        function setupDailyWord() {
+            if (appData.gunun_kelimesi) {
+                document.getElementById('daily-fr').innerText = appData.gunun_kelimesi.fr;
+                document.getElementById('daily-tr').innerText = appData.gunun_kelimesi.tr;
+                document.getElementById('daily-example').innerText = appData.gunun_kelimesi.example || "";
+            }
+        }
+
+        // Kategori Seçimi Setup
+        function setupCategorySelect() {
+            const select = document.getElementById('category-select');
+            select.innerHTML = '';
+            appData.kategoriler.forEach((cat, index) => {
+                const opt = document.createElement('option');
+                opt.value = index;
+                opt.innerText = cat.isim;
+                select.appendChild(opt);
+            });
+            select.value = userState.currentCategoryIndex;
+        }
+
+        function changeCategory() {
+            userState.currentCategoryIndex = parseInt(document.getElementById('category-select').value);
+            userState.currentCardIndex = 0;
+            saveUserState();
+            showCurrentCard();
+        }
+
+        // Kart İşlemleri
+        function showCurrentCard() {
+            const cat = appData.kategoriler[userState.currentCategoryIndex];
+            if (!cat || !cat.kelimeler.length) return;
+
+            const card = cat.kelimeler[userState.currentCardIndex];
+            document.getElementById('card-fr').innerText = card.fr;
+            document.getElementById('card-tr').innerText = card.tr;
+            document.getElementById('card-phonetic').innerText = card.phonetic ? `[${card.phonetic}]` : '';
+            document.getElementById('card-example-fr').innerText = card.example_fr || '';
+            document.getElementById('card-example-tr').innerText = card.example_tr || '';
+
+            document.getElementById('card-indicator').innerText = `${userState.currentCardIndex + 1} / ${cat.kelimeler.length}`;
+
+            // Kartı ön yüze çevir
+            document.getElementById('flashcard').classList.remove('rotate-y-180');
+        }
+
+        function flipCard() {
+            document.getElementById('flashcard').classList.toggle('rotate-y-180');
+        }
+
+        function nextCard() {
+            const cat = appData.kategoriler[userState.currentCategoryIndex];
+            if (userState.currentCardIndex < cat.kelimeler.length - 1) {
+                userState.currentCardIndex++;
+                showCurrentCard();
+                addXP(2); // Kart inceleme puanı
+            }
+        }
+
+        function prevCard() {
+            if (userState.currentCardIndex > 0) {
+                userState.currentCardIndex--;
+                showCurrentCard();
+            }
+        }
+
+        // Sesli Okuma (SpeechSynthesis API)
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'fr-FR';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Test Modu
+        function generateQuiz() {
+            const allWords = [];
+            appData.kategoriler.forEach(c => allWords.push(...c.kelimeler));
+            if (allWords.length < 4) return;
+
+            const targetWord = allWords[Math.floor(Math.random() * allWords.length)];
+            currentQuizCorrectAnswer = targetWord.tr;
+
+            document.getElementById('quiz-question').innerText = targetWord.fr;
+
+            // Yanlış şıkları seç
+            const options = [targetWord.tr];
+            while (options.length < 4) {
+                const randomWord = allWords[Math.floor(Math.random() * allWords.length)].tr;
+                if (!options.includes(randomWord)) {
+                    options.push(randomWord);
+                }
+            }
+
+            // Şıkları karıştır
+            options.sort(() => Math.random() - 0.5);
+
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+            document.getElementById('quiz-feedback').classList.add('hidden');
+
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "w-full bg-slate-700 hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-xl transition text-left border border-slate-600";
+                btn.innerText = opt;
+                btn.onclick = () => checkQuizAnswer(opt, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function checkQuizAnswer(selected, buttonEl) {
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.classList.remove('hidden');
+
+            if (selected === currentQuizCorrectAnswer) {
+                feedback.className = "mt-4 p-3 rounded-xl text-center font-semibold bg-emerald-900/80 text-emerald-200 border border-emerald-700";
+                feedback.innerText = "Tebrikler! Doğru cevap (+10 XP)";
+                addXP(10);
+                speakText(document.getElementById('quiz-question').innerText);
+            } else {
+                feedback.className = "mt-4 p-3 rounded-xl text-center font-semibold bg-rose-900/80 text-rose-200 border border-rose-700";
+                feedback.innerText = `Yanlış! Doğru cevap: ${currentQuizCorrectAnswer}`;
+            }
+
+            setTimeout(() => {
+                generateQuiz();
+            }, 2000);
+        }
+
+        // Sözlük Modu
+        function renderDictionary(filter = '') {
+            const list = document.getElementById('dict-list');
+            list.innerHTML = '';
+
+            const allWords = [];
+            appData.kategoriler.forEach(c => allWords.push(...c.kelimeler));
+
+            const filtered = allWords.filter(w => 
+                w.fr.toLowerCase().includes(filter.toLowerCase()) || 
+                w.tr.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            filtered.forEach(w => {
+                const item = document.createElement('div');
+                item.className = "bg-slate-800 p-3 rounded-xl border border-slate-700 flex justify-between items-center";
+                item.innerHTML = `
+                    <div>
+                        <span class="font-bold text-white text-base">${w.fr}</span>
+                        <span class="text-xs text-slate-400 ml-2">[${w.phonetic || ''}]</span>
+                        <p class="text-sm text-slate-300">${w.tr}</p>
+                    </div>
+                    <button onclick="speakText('${w.fr}')" class="text-indigo-400 hover:text-indigo-300 p-2">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function filterDictionary() {
+            const query = document.getElementById('dict-search').value;
+            renderDictionary(query);
+        }
+
+        // Sekme Değişimi
+        function switchTab(tab) {
+            ['cards', 'quiz', 'dictionary'].forEach(t => {
+                document.getElementById(`section-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "tab-btn bg-slate-800 text-slate-400 hover:text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2";
+            });
+
+            document.getElementById(`section-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "tab-btn bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2";
+        }
+    </script>
+</body>
+</html>
+
+ 
