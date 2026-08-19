@@ -1,1 +1,41 @@
-. 
+{
+  "gunun_kelimesi": {
+    "fr": "Apprendre",
+    "tr": "Öğrenmek",
+    "example": "J'aime apprendre le français tous les jours."
+  },
+  "kategoriler": [
+    {
+      "id": "selamlasma",
+      "isim": "Selamlaşma & Tanışma",
+      "kelimeler": [
+        { "fr": "Bonjour", "tr": "Merhaba / İyi günler", "phonetic": "bonjur", "example_fr": "Bonjour, comment allez-vous?", "example_tr": "Merhaba, nasılsınız?" },
+        { "fr": "Bonsoir", "tr": "İyi akşamlar", "phonetic": "bonsuar", "example_fr": "Bonsoir tout le monde.", "example_tr": "Herkese iyi akşamlar." },
+        { "fr": "Comment vous vous appelez?", "tr": "Adınız nedir?", "phonetic": "koman vu vuz aple", "example_fr": "Bonjour, comment vous vous appelez?", "example_tr": "Merhaba, adınız nedir?" },
+        { "fr": "Je m'appelle...", "tr": "Benim adım...", "phonetic": "jö mapel", "example_fr": "Je m'appelle Ahsen.", "example_tr": "Benim adım Ahsen." },
+        { "fr": "Enchanté", "tr": "Memnun oldum", "phonetic": "anşante", "example_fr": "Enchanté de vous rencontrer.", "example_tr": "Sizinle tanıştığıma memnun oldum." }
+      ]
+    },
+    {
+      "id": "gunluk",
+      "isim": "Günlük Konuşma & İfadeler",
+      "kelimeler": [
+        { "fr": "S'il vous plaît", "tr": "Lütfen", "phonetic": "sil vu ple", "example_fr": "Un café, s'il vous plaît.", "example_tr": "Bir kahve, lütfen." },
+        { "fr": "Merci beaucoup", "tr": "Çok teşekkür ederim", "phonetic": "mersi boku", "example_fr": "Merci beaucoup pour votre aide.", "example_tr": "Yardımınız için çok teşekkür ederim." },
+        { "fr": "De rien", "tr": "Rica ederim", "phonetic": "dö ryan", "example_fr": "De rien, c'est un plaisir.", "example_tr": "Rica ederim, bir zevkti." },
+        { "fr": "Oui", "tr": "Evet", "phonetic": "vi", "example_fr": "Oui, c'est vrai.", "example_tr": "Evet, bu doğru." },
+        { "fr": "Non", "tr": "Hayır", "phonetic": "no", "example_fr": "Non, je ne sais pas.", "example_tr": "Hayır, bilmiyorum." }
+      ]
+    },
+    {
+      "id": "seyahat",
+      "isim": "Seyahat & Yönler",
+      "kelimeler": [
+        { "fr": "Où est...?", "tr": "... nerede?", "phonetic": "u e", "example_fr": "Où est la gare?", "example_tr": "Tren istasyonu nerede?" },
+        { "fr": "L'hôtel", "tr": "Otel", "phonetic": "lotel", "example_fr": "Où se trouve l'hôtel?", "example_tr": "Otel nerede bulunuyor?" },
+        { "fr": "Combien ça coûte?", "tr": "Bu ne kadar?", "phonetic": "kombiyan sa kut", "example_fr": "Excusez-moi, combien ça coûte?", "example_tr": "Affedersiniz, bu ne kadar?" },
+        { "fr": "L'aéroport", "tr": "Havalimanı", "phonetic": "laeropor", "example_fr": "Je vais à l'aéroport.", "example_tr": "Havalimanına gidiyorum." }
+      ]
+    }
+  ]
+} 
