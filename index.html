@@ -22,12 +22,12 @@
                 <span class="text-2xl">🇫🇷</span>
                 <div>
                     <h1 class="font-bold text-lg leading-none">Fransızca Öğren</h1>
-                    <span class="text-xs text-slate-400">Türkçe ➔ Fransızca</span>
+                    <span class="text-xs text-slate-400">Kelime & Fiil Çekim Rehberi</span>
                 </div>
             </div>
 
             <!-- İstatistikler -->
-            <div class="flex items-center gap-4 text-sm font-semibold">
+            <div class="flex items-center gap-3 text-sm font-semibold">
                 <div class="flex items-center gap-1 text-amber-400 bg-slate-900 px-3 py-1.5 rounded-full border border-slate-700" title="Gün Serisi">
                     <i class="fa-solid fa-fire text-amber-500"></i>
                     <span id="streak-count">0</span> Gün
@@ -47,7 +47,7 @@
         <div id="daily-word-card" class="bg-gradient-to-r from-blue-900/60 to-indigo-900/60 border border-indigo-500/30 rounded-2xl p-5 shadow-xl relative overflow-hidden">
             <div class="flex justify-between items-start mb-2">
                 <span class="text-xs uppercase font-bold tracking-wider text-indigo-300 bg-indigo-950/80 px-2.5 py-1 rounded-md border border-indigo-800">
-                    Günün Fransızca Kelimesi
+                    Günün Fransızca İfadesi
                 </span>
                 <button onclick="speakText(document.getElementById('daily-fr').innerText)" class="text-indigo-300 hover:text-white transition">
                     <i class="fa-solid fa-volume-high text-lg"></i>
@@ -62,13 +62,16 @@
 
         <!-- Mod Seçenekleri -->
         <div class="flex gap-2 border-b border-slate-800 pb-2 overflow-x-auto">
-            <button onclick="switchTab('cards')" id="tab-cards" class="tab-btn bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2">
+            <button onclick="switchTab('cards')" id="tab-cards" class="tab-btn bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2 whitespace-nowrap">
                 <i class="fa-solid fa-clone"></i> Kelime Kartları
             </button>
-            <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn bg-slate-800 text-slate-400 hover:text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2">
-                <i class="fa-solid fa-circle-question"></i> Test & Alıştırma
+            <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn bg-slate-800 text-slate-400 hover:text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2 whitespace-nowrap">
+                <i class="fa-solid fa-circle-question"></i> Kelime Testi
             </button>
-            <button onclick="switchTab('dictionary')" id="tab-dictionary" class="tab-btn bg-slate-800 text-slate-400 hover:text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2">
+            <button onclick="switchTab('verbs')" id="tab-verbs" class="tab-btn bg-slate-800 text-slate-400 hover:text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2 whitespace-nowrap">
+                <i class="fa-solid fa-book-open-reader"></i> Fiil Çekimleri
+            </button>
+            <button onclick="switchTab('dictionary')" id="tab-dictionary" class="tab-btn bg-slate-800 text-slate-400 hover:text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2 whitespace-nowrap">
                 <i class="fa-solid fa-book"></i> Sözlük
             </button>
         </div>
@@ -77,36 +80,31 @@
 
         <!-- 1. KELİME KARTLARI MODU -->
         <section id="section-cards" class="space-y-4">
-            <!-- Kategori Seçimi -->
             <div class="flex justify-between items-center">
                 <label for="category-select" class="text-sm text-slate-400">Kategori Seçin:</label>
-                <select id="category-select" onchange="changeCategory()" class="bg-slate-800 border border-slate-700 text-slate-200 text-sm rounded-xl px-3 py-2 focus:outline-none focus:border-indigo-500">
+                <select id="category-select" onchange="changeCategory()" class="bg-slate-800 border border-slate-700 text-slate-200 text-sm rounded-xl px-3 py-2 focus:outline-none focus:border-indigo-500 max-w-xs">
                 </select>
             </div>
 
-            <!-- Çevrilebilir Kart -->
             <div class="perspective-1000 w-full h-64 cursor-pointer my-6" onclick="flipCard()">
                 <div id="flashcard" class="relative w-full h-full duration-500 transform-style-3d bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl flex items-center justify-center p-6 text-center">
-                    <!-- Ön Yüz (Fransızca) -->
                     <div class="absolute inset-0 backface-hidden flex flex-col items-center justify-center p-6">
                         <span class="text-xs text-indigo-400 font-semibold mb-2">FRANSIZCA (Tıkla ve Çevir)</span>
-                        <h3 id="card-fr" class="text-4xl font-extrabold text-white mb-2">---</h3>
+                        <h3 id="card-fr" class="text-3xl font-extrabold text-white mb-2">---</h3>
                         <p id="card-phonetic" class="text-sm text-slate-400 italic mb-4">[/.../]</p>
                         <button onclick="event.stopPropagation(); speakText(document.getElementById('card-fr').innerText)" class="p-3 bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white rounded-full transition">
                             <i class="fa-solid fa-volume-high text-xl"></i>
                         </button>
                     </div>
-                    <!-- Arka Yüz (Türkçe) -->
                     <div class="absolute inset-0 backface-hidden rotate-y-180 flex flex-col items-center justify-center p-6 bg-slate-800/95 rounded-2xl">
                         <span class="text-xs text-emerald-400 font-semibold mb-2">TÜRKÇE KARŞILIĞI</span>
-                        <h3 id="card-tr" class="text-3xl font-bold text-slate-100 mb-3">---</h3>
+                        <h3 id="card-tr" class="text-2xl font-bold text-slate-100 mb-3">---</h3>
                         <p id="card-example-fr" class="text-sm text-slate-300 font-medium italic"></p>
                         <p id="card-example-tr" class="text-xs text-slate-400 mt-1"></p>
                     </div>
                 </div>
             </div>
 
-            <!-- Kart Navigasyonu -->
             <div class="flex items-center justify-between gap-4">
                 <button onclick="prevCard()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-slate-200 py-3 rounded-xl font-semibold transition border border-slate-700">
                     <i class="fa-solid fa-arrow-left mr-2"></i> Önceki
@@ -118,11 +116,11 @@
             </div>
         </section>
 
-        <!-- 2. TEST MODU -->
+        <!-- 2. KELİME TESTİ MODU -->
         <section id="section-quiz" class="hidden space-y-4">
             <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-xl">
                 <div class="flex justify-between items-center mb-4">
-                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Test Modu (+10 XP)</span>
+                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Kelime Testi (+10 XP)</span>
                     <button onclick="speakText(document.getElementById('quiz-question').innerText)" class="text-slate-400 hover:text-white">
                         <i class="fa-solid fa-volume-high"></i>
                     </button>
@@ -130,80 +128,228 @@
                 <h3 id="quiz-question" class="text-2xl font-bold text-white mb-6">Soru yükleniyor...</h3>
 
                 <div id="quiz-options" class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    <!-- Seçenekler JS ile dolacak -->
                 </div>
 
                 <div id="quiz-feedback" class="mt-4 p-3 rounded-xl text-center font-semibold hidden"></div>
             </div>
         </section>
 
-        <!-- 3. SÖZLÜK MODU -->
+        <!-- 3. FİİL ÇEKİMLERİ MODU -->
+        <section id="section-verbs" class="hidden space-y-6">
+            <!-- Fiil ve Zaman Seçimi -->
+            <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 shadow-xl space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 mb-2">Öğrenilecek Fiil:</label>
+                        <select id="verb-select" onchange="renderVerbConjugation()" class="w-full bg-slate-900 border border-slate-700 text-white text-sm rounded-xl p-3 focus:outline-none focus:border-indigo-500">
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 mb-2">Zaman (Tense):</label>
+                        <div class="flex gap-2">
+                            <button onclick="setVerbTense('present')" id="tense-present" class="flex-1 bg-indigo-600 text-white text-xs font-semibold py-2.5 rounded-xl transition">Présent (Şimdiki)</button>
+                            <button onclick="setVerbTense('passe')" id="tense-passe" class="flex-1 bg-slate-900 text-slate-400 text-xs font-semibold py-2.5 rounded-xl transition border border-slate-700">Passé Composé (Geçmiş)</button>
+                            <button onclick="setVerbTense('futur')" id="tense-futur" class="flex-1 bg-slate-900 text-slate-400 text-xs font-semibold py-2.5 rounded-xl transition border border-slate-700">Futur Simple (Gelecek)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seçilen Fiil Başlığı -->
+                <div class="flex items-center justify-between border-t border-slate-700 pt-4 mt-2">
+                    <div>
+                        <span id="verb-infinitive" class="text-2xl font-extrabold text-white mr-2">---</span>
+                        <span id="verb-meaning" class="text-sm text-slate-400">---</span>
+                    </div>
+                    <button onclick="speakText(document.getElementById('verb-infinitive').innerText)" class="p-2 bg-indigo-600/20 text-indigo-300 rounded-lg hover:bg-indigo-600 hover:text-white transition">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Çekim Tablosu -->
+            <div id="conjugation-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            </div>
+
+            <!-- Fiil Çekim Alıştırması -->
+            <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 shadow-xl space-y-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Fiil Çekim Testi (+10 XP)</span>
+                    <span class="text-xs text-slate-400">Cümledeki boşluğu doldurun</span>
+                </div>
+                <h4 id="verb-quiz-sentence" class="text-xl font-bold text-white">...</h4>
+                <div id="verb-quiz-options" class="grid grid-cols-2 gap-3">
+                </div>
+                <div id="verb-quiz-feedback" class="mt-2 p-3 rounded-xl text-center text-sm font-semibold hidden"></div>
+            </div>
+        </section>
+
+        <!-- 4. SÖZLÜK MODU -->
         <section id="section-dictionary" class="hidden space-y-4">
-            <input type="text" id="dict-search" oninput="filterDictionary()" placeholder="Kelime ara (Türkçe veya Fransızca)..." class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500">
+            <input type="text" id="dict-search" oninput="filterDictionary()" placeholder="Kelime veya fiil ara..." class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-indigo-500">
 
             <div id="dict-list" class="space-y-2 max-h-96 overflow-y-auto pr-1">
-                <!-- Kelimeler JS ile yüklenecek -->
             </div>
         </section>
 
     </main>
 
     <footer class="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
-        Fransızca Öğrenme Asistanı &bull; Çevrimdışı ve Yerel İlerleme Kaydı
+        Fransızca Öğrenme Asistanı &bull; Çevrimdışı İlerleme ve Fiil Çekim Modülü
     </footer>
 
     <script>
-        // Varsayılan Veri Yapısı (JSON yüklenemezse yedek olarak çalışır)
+        // Yerleşik Fiil Çekim Veritabanı
+        let verbData = [
+            {
+                infinitive: "Être",
+                meaning: "Olmak / Bulunmak",
+                present: { je: "suis", tu: "es", il: "est", nous: "sommes", vous: "êtes", ils: "sont" },
+                passe: { je: "ai été", tu: "as été", il: "a été", nous: "avons été", vous: "avez été", ils: "ont été" },
+                futur: { je: "serai", tu: "seras", il: "sera", nous: "serons", vous: "serez", ils: "seront" },
+                tr_present: { je: "ben -yim", tu: "sensin", il: "odur", nous: "biziz", vous: "sizsiniz", ils: "onlardır" }
+            },
+            {
+                infinitive: "Avoir",
+                meaning: "Sahip Olmak",
+                present: { je: "j'ai", tu: "as", il: "a", nous: "avons", vous: "avez", ils: "ont" },
+                passe: { je: "ai eu", tu: "as eu", il: "a eu", nous: "avons eu", vous: "avez eu", ils: "ont eu" },
+                futur: { je: "aurai", tu: "auras", il: "aura", nous: "aurons", vous: "aurez", ils: "auront" },
+                tr_present: { je: "benim var", tu: "senin var", il: "onun var", nous: "bizim var", vous: "sizin var", ils: "onların var" }
+            },
+            {
+                infinitive: "Parler",
+                meaning: "Konuşmak",
+                present: { je: "parle", tu: "parles", il: "parle", nous: "parlons", vous: "parlez", ils: "parlent" },
+                passe: { je: "ai parlé", tu: "as parlé", il: "a parlé", nous: "avons parlé", vous: "avez parlé", ils: "ont parlé" },
+                futur: { je: "parlerai", tu: "parleras", il: "parlera", nous: "parlerons", vous: "parlerez", ils: "parleront" },
+                tr_present: { je: "konuşuyorum", tu: "konuşuyorsun", il: "konuşuyor", nous: "konuşuyoruz", vous: "konuşuyorsunuz", ils: "konuşuyorlar" }
+            },
+            {
+                infinitive: "Aller",
+                meaning: "Gitmek",
+                present: { je: "vais", tu: "vas", il: "va", nous: "allons", vous: "allez", ils: "vont" },
+                passe: { je: "suis allé(e)", tu: "es allé(e)", il: "est allé", nous: "sommes allé(e)s", vous: "êtes allé(e)s", ils: "sont allés" },
+                futur: { je: "irai", tu: "iras", il: "ira", nous: "irons", vous: "irez", ils: "iront" },
+                tr_present: { je: "gidiyorum", tu: "gidiyorsun", il: "gidiyor", nous: "gidiyoruz", vous: "gidiyorsunuz", ils: "gidiyorlar" }
+            },
+            {
+                infinitive: "Faire",
+                meaning: "Yapmak / Etmek",
+                present: { je: "fais", tu: "fais", il: "fait", nous: "faisons", vous: "faites", ils: "font" },
+                passe: { je: "ai fait", tu: "as fait", il: "a fait", nous: "avons fait", vous: "avez fait", ils: "ont fait" },
+                futur: { je: "ferai", tu: "feras", il: "fera", nous: "ferons", vous: "ferez", ils: "feront" },
+                tr_present: { je: "yapıyorum", tu: "yapıyorsun", il: "yapıyor", nous: "yapıyoruz", vous: "yapıyorsunuz", ils: "yapıyorlar" }
+            },
+            {
+                infinitive: "Pouvoir",
+                meaning: "Yapabilmek (-ebilmek)",
+                present: { je: "peux", tu: "peux", il: "peut", nous: "pouvons", vous: "pouvez", ils: "peuvent" },
+                passe: { je: "ai pu", tu: "as pu", il: "a pu", nous: "avons pu", vous: "avez pu", ils: "ont pu" },
+                futur: { je: "pourrai", tu: "pourras", il: "pourra", nous: "pourrons", vous: "pourrez", ils: "pourront" },
+                tr_present: { je: "yapabiliyorum", tu: "yapabiliyorsun", il: "yapabiliyor", nous: "yapabiliyoruz", vous: "yapabiliyorsunuz", ils: "yapabiliyorlar" }
+            },
+            {
+                infinitive: "Vouloir",
+                meaning: "İstemek",
+                present: { je: "veux", tu: "veux", il: "veut", nous: "voulons", vous: "voulez", ils: "veulent" },
+                passe: { je: "ai voulu", tu: "as voulu", il: "a voulu", nous: "avons voulu", vous: "avez voulu", ils: "ont voulu" },
+                futur: { je: "voudrai", tu: "voudras", il: "voudra", nous: "voudrons", vous: "voudrez", ils: "voudront" },
+                tr_present: { je: "istiyorum", tu: "istiyorsun", il: "istiyor", nous: "istiyoruz", vous: "istiyorsunuz", ils: "istiyorlar" }
+            },
+            {
+                infinitive: "Manger",
+                meaning: "Yemek Yemek",
+                present: { je: "mange", tu: "manges", il: "mange", nous: "mangeons", vous: "mangez", ils: "mangent" },
+                passe: { je: "ai mangé", tu: "as mangé", il: "a mangé", nous: "avons mangé", vous: "avez mangé", ils: "ont mangé" },
+                futur: { je: "mangerai", tu: "mangeras", il: "mangera", nous: "mangerons", vous: "mangerez", ils: "mangeront" },
+                tr_present: { je: "yiyorum", tu: "yiyorsun", il: "yiyor", nous: "yiyoruz", vous: "yiyorsunuz", ils: "yiyorlar" }
+            },
+            {
+                infinitive: "Prendre",
+                meaning: "Almak / Binmek",
+                present: { je: "prends", tu: "prends", il: "prend", nous: "prenons", vous: "prenez", ils: "prennent" },
+                passe: { je: "ai pris", tu: "as pris", il: "a pris", nous: "avons pris", vous: "avez pris", ils: "ont pris" },
+                futur: { je: "prendrai", tu: "prendras", il: "prendra", nous: "prendrons", vous: "prendrez", ils: "prendront" },
+                tr_present: { je: "alıyorum", tu: "alıyorsun", il: "alıyor", nous: "alıyoruz", vous: "alıyorsunuz", ils: "alıyorlar" }
+            },
+            {
+                infinitive: "Venir",
+                meaning: "Gelmek",
+                present: { je: "viens", tu: "viens", il: "vient", nous: "venons", vous: "venez", ils: "viennent" },
+                passe: { je: "suis venu(e)", tu: "es venu(e)", il: "est venu", nous: "sommes venu(e)s", vous: "êtes venu(e)s", ils: "sont venus" },
+                futur: { je: "viendrai", tu: "viendras", il: "viendra", nous: "viendrons", vous: "viendrez", ils: "viendront" },
+                tr_present: { je: "geliyorum", tu: "geliyorsun", il: "geliyor", nous: "geliyoruz", vous: "geliyorsunuz", ils: "geliyorlar" }
+            },
+            {
+                infinitive: "Voir",
+                meaning: "Görmek",
+                present: { je: "vois", tu: "vois", il: "voit", nous: "voyons", vous: "voyez", ils: "voient" },
+                passe: { je: "ai vu", tu: "as vu", il: "a vu", nous: "avons vu", vous: "avez vu", ils: "ont vu" },
+                futur: { je: "verrai", tu: "verras", il: "verra", nous: "verrons", vous: "verrez", ils: "verront" },
+                tr_present: { je: "görüyorum", tu: "görüyorsun", il: "görüyor", nous: "görüyoruz", vous: "görüyorsunuz", ils: "görüyorlar" }
+            },
+            {
+                infinitive: "Devoir",
+                meaning: "Zorunda Olmak",
+                present: { je: "dois", tu: "dois", il: "doit", nous: "devons", vous: "devez", ils: "doivent" },
+                passe: { je: "ai dû", tu: "as dû", il: "a dû", nous: "avons dû", vous: "avez dû", ils: "ont dû" },
+                futur: { je: "devrai", tu: "devras", il: "devra", nous: "devrons", vous: "devrez", ils: "devront" },
+                tr_present: { je: "zorundayım", tu: "zorundasın", il: "zorundadır", nous: "zorundayız", vous: "zorundasınız", ils: "zorundalar" }
+            },
+            {
+                infinitive: "Savoir",
+                meaning: "Bilmek",
+                present: { je: "sais", tu: "sais", il: "sait", nous: "savons", vous: "savez", ils: "savent" },
+                passe: { je: "ai su", tu: "as su", il: "a su", nous: "avons su", vous: "avez su", ils: "ont su" },
+                futur: { je: "saurai", tu: "sauras", il: "saura", nous: "saurons", vous: "saurez", ils: "sauront" },
+                tr_present: { je: "biliyorum", tu: "biliyorsun", il: "biliyor", nous: "biliyoruz", vous: "biliyorsunuz", ils: "biliyorlar" }
+            }
+        ];
+
         let appData = {
-            gunun_kelimesi: { fr: "Bonjour", tr: "Merhaba", example: "Bonjour, comment ça va?" },
-            kategoriler: [
-                {
-                    id: "temel",
-                    isim: "Temel Selamlaşma",
-                    kelimeler: [
-                        { fr: "Bonjour", tr: "Merhaba / İyi günler", phonetic: "bonjur", example_fr: "Bonjour mon ami!", example_tr: "Merhaba arkadaşım!" },
-                        { fr: "Merci", tr: "Teşekkür ederim", phonetic: "mersi", example_fr: "Merci beaucoup.", example_tr: "Çok teşekkür ederim." },
-                        { fr: "S'il vous plaît", tr: "Lütfen", phonetic: "sil vu ple", example_fr: "Un café, s'il vous plaît.", example_tr: "Bir kahve, lütfen." },
-                        { fr: "Au revoir", tr: "Hoşça kal", phonetic: "o rvuar", example_fr: "Au revoir et à bientôt!", example_tr: "Hoşça kal ve yakında görüşürüz!" },
-                        { fr: "Oui", tr: "Evet", phonetic: "vi", example_fr: "Oui, je comprends.", example_tr: "Evet, anlıyorum." },
-                        { fr: "Non", tr: "Hayır", phonetic: "no", example_fr: "Non, merci.", example_tr: "Hayır, teşekkürler." }
-                    ]
-                }
-            ]
+            gunun_kelimesi: { fr: "Apprendre", tr: "Öğrenmek", example: "J'aime apprendre de nouveaux mots." },
+            kategoriler: []
         };
 
-        // Kullanıcı Durumu
         let userState = {
             xp: 0,
             streak: 1,
             lastVisit: new Date().toDateString(),
             currentCategoryIndex: 0,
-            currentCardIndex: 0
+            currentCardIndex: 0,
+            selectedVerbIndex: 0,
+            selectedVerbTense: 'present'
         };
 
         let currentQuizCorrectAnswer = "";
+        let currentVerbQuizCorrect = "";
 
-        // Sayfa Yüklendiğinde
         window.onload = function() {
             loadUserState();
             fetchData();
+            setupVerbSelect();
+            renderVerbConjugation();
+            generateVerbQuiz();
         };
 
-        // JSON Verisini Çekme
         function fetchData() {
             fetch('data.json')
                 .then(res => res.json())
                 .then(data => {
                     appData = data;
+                    if (data.fiiller && data.fiiller.length > 0) {
+                        verbData = data.fiiller;
+                        setupVerbSelect();
+                        renderVerbConjugation();
+                        generateVerbQuiz();
+                    }
                     initApp();
                 })
                 .catch(err => {
-                    console.log('data.json yüklenemedi, varsayılan veri kullanılıyor.');
                     initApp();
                 });
         }
 
-        // Uygulamayı Başlatma
         function initApp() {
             updateStatsUI();
             setupDailyWord();
@@ -213,13 +359,10 @@
             renderDictionary();
         }
 
-        // Kullanıcı İlerlemesini Yükleme (localStorage)
         function loadUserState() {
             const saved = localStorage.getItem('fr_learning_user');
             if (saved) {
                 userState = JSON.parse(saved);
-                
-                // Gün Serisi Kontrolü
                 const today = new Date().toDateString();
                 if (userState.lastVisit !== today) {
                     const yesterday = new Date();
@@ -250,7 +393,6 @@
             document.getElementById('streak-count').innerText = userState.streak;
         }
 
-        // Günün Kelimesi
         function setupDailyWord() {
             if (appData.gunun_kelimesi) {
                 document.getElementById('daily-fr').innerText = appData.gunun_kelimesi.fr;
@@ -259,17 +401,19 @@
             }
         }
 
-        // Kategori Seçimi Setup
         function setupCategorySelect() {
             const select = document.getElementById('category-select');
+            if (!select) return;
             select.innerHTML = '';
-            appData.kategoriler.forEach((cat, index) => {
-                const opt = document.createElement('option');
-                opt.value = index;
-                opt.innerText = cat.isim;
-                select.appendChild(opt);
-            });
-            select.value = userState.currentCategoryIndex;
+            if (appData.kategoriler && appData.kategoriler.length > 0) {
+                appData.kategoriler.forEach((cat, index) => {
+                    const opt = document.createElement('option');
+                    opt.value = index;
+                    opt.innerText = cat.isim;
+                    select.appendChild(opt);
+                });
+                select.value = userState.currentCategoryIndex;
+            }
         }
 
         function changeCategory() {
@@ -279,10 +423,10 @@
             showCurrentCard();
         }
 
-        // Kart İşlemleri
         function showCurrentCard() {
+            if (!appData.kategoriler || appData.kategoriler.length === 0) return;
             const cat = appData.kategoriler[userState.currentCategoryIndex];
-            if (!cat || !cat.kelimeler.length) return;
+            if (!cat || !cat.kelimeler || cat.kelimeler.length === 0) return;
 
             const card = cat.kelimeler[userState.currentCardIndex];
             document.getElementById('card-fr').innerText = card.fr;
@@ -292,8 +436,6 @@
             document.getElementById('card-example-tr').innerText = card.example_tr || '';
 
             document.getElementById('card-indicator').innerText = `${userState.currentCardIndex + 1} / ${cat.kelimeler.length}`;
-
-            // Kartı ön yüze çevir
             document.getElementById('flashcard').classList.remove('rotate-y-180');
         }
 
@@ -302,11 +444,12 @@
         }
 
         function nextCard() {
+            if (!appData.kategoriler || appData.kategoriler.length === 0) return;
             const cat = appData.kategoriler[userState.currentCategoryIndex];
             if (userState.currentCardIndex < cat.kelimeler.length - 1) {
                 userState.currentCardIndex++;
                 showCurrentCard();
-                addXP(2); // Kart inceleme puanı
+                addXP(2);
             }
         }
 
@@ -317,7 +460,126 @@
             }
         }
 
-        // Sesli Okuma (SpeechSynthesis API)
+        // FİİL ÇEKİMLERİ SİSTEMİ
+        function setupVerbSelect() {
+            const select = document.getElementById('verb-select');
+            select.innerHTML = '';
+            verbData.forEach((v, index) => {
+                const opt = document.createElement('option');
+                opt.value = index;
+                opt.innerText = `${v.infinitive} (${v.meaning})`;
+                select.appendChild(opt);
+            });
+            select.value = userState.selectedVerbIndex;
+        }
+
+        function setVerbTense(tense) {
+            userState.selectedVerbTense = tense;
+            ['present', 'passe', 'futur'].forEach(t => {
+                const btn = document.getElementById(`tense-${t}`);
+                if (t === tense) {
+                    btn.className = "flex-1 bg-indigo-600 text-white text-xs font-semibold py-2.5 rounded-xl transition";
+                } else {
+                    btn.className = "flex-1 bg-slate-900 text-slate-400 text-xs font-semibold py-2.5 rounded-xl transition border border-slate-700";
+                }
+            });
+            renderVerbConjugation();
+        }
+
+        function renderVerbConjugation() {
+            const selectIndex = parseInt(document.getElementById('verb-select').value) || 0;
+            userState.selectedVerbIndex = selectIndex;
+            const verb = verbData[selectIndex];
+            const tense = userState.selectedVerbTense;
+
+            document.getElementById('verb-infinitive').innerText = verb.infinitive;
+            document.getElementById('verb-meaning').innerText = `(${verb.meaning})`;
+
+            const grid = document.getElementById('conjugation-grid');
+            grid.innerHTML = '';
+
+            const pronouns = [
+                { key: 'je', label: verb.infinitive.toLowerCase().startsWith('a') || verb.infinitive.toLowerCase().startsWith('e') ? "J'" : "Je" },
+                { key: 'tu', label: "Tu" },
+                { key: 'il', label: "Il / Elle / On" },
+                { key: 'nous', label: "Nous" },
+                { key: 'vous', label: "Vous" },
+                { key: 'ils', label: "Ils / Elles" }
+            ];
+
+            pronouns.forEach(p => {
+                const conjugated = verb[tense][p.key];
+                const fullText = (p.label === "J'" && tense === 'present' && verb.infinitive === 'Avoir') ? conjugated : `${p.label} ${conjugated}`;
+
+                const card = document.createElement('div');
+                card.className = "bg-slate-800 border border-slate-700 p-4 rounded-xl flex items-center justify-between shadow-md";
+                card.innerHTML = `
+                    <div>
+                        <span class="text-xs text-indigo-400 font-semibold uppercase">${p.label}</span>
+                        <h4 class="text-lg font-bold text-white mt-0.5">${fullText}</h4>
+                        <span class="text-xs text-slate-400">${verb.tr_present ? verb.tr_present[p.key] : ''}</span>
+                    </div>
+                    <button onclick="speakText('${fullText}')" class="p-2 text-slate-400 hover:text-white transition">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function generateVerbQuiz() {
+            const randomVerb = verbData[Math.floor(Math.random() * verbData.length)];
+            const pronouns = ['je', 'tu', 'il', 'nous', 'vous', 'ils'];
+            const pronounLabels = { je: "Je", tu: "Tu", il: "Il", nous: "Nous", vous: "Vous", ils: "Ils" };
+            const randomPronoun = pronouns[Math.floor(Math.random() * pronouns.length)];
+
+            currentVerbQuizCorrect = randomVerb.present[randomPronoun];
+            const pLabel = pronounLabels[randomPronoun];
+
+            document.getElementById('verb-quiz-sentence').innerText = `${pLabel} _____ (${randomVerb.infinitive})`;
+
+            const options = [currentVerbQuizCorrect];
+            while (options.length < 4) {
+                const rVerb = verbData[Math.floor(Math.random() * verbData.length)];
+                const rPronoun = pronouns[Math.floor(Math.random() * pronouns.length)];
+                const wrong = rVerb.present[rPronoun];
+                if (!options.includes(wrong)) {
+                    options.push(wrong);
+                }
+            }
+            options.sort(() => Math.random() - 0.5);
+
+            const container = document.getElementById('verb-quiz-options');
+            container.innerHTML = '';
+            document.getElementById('verb-quiz-feedback').classList.add('hidden');
+
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = "bg-slate-700 hover:bg-slate-600 text-white font-semibold py-2.5 px-3 rounded-xl text-center border border-slate-600 transition text-sm";
+                btn.innerText = opt;
+                btn.onclick = () => checkVerbQuizAnswer(opt);
+                container.appendChild(btn);
+            });
+        }
+
+        function checkVerbQuizAnswer(selected) {
+            const feedback = document.getElementById('verb-quiz-feedback');
+            feedback.classList.remove('hidden');
+
+            if (selected === currentVerbQuizCorrect) {
+                feedback.className = "p-3 rounded-xl text-center text-sm font-semibold bg-emerald-900/80 text-emerald-200 border border-emerald-700";
+                feedback.innerText = "Doğru çekim! (+10 XP)";
+                addXP(10);
+            } else {
+                feedback.className = "p-3 rounded-xl text-center text-sm font-semibold bg-rose-900/80 text-rose-200 border border-rose-700";
+                feedback.innerText = `Yanlış. Doğru cevap: ${currentVerbQuizCorrect}`;
+            }
+
+            setTimeout(() => {
+                generateVerbQuiz();
+            }, 2000);
+        }
+
         function speakText(text) {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
@@ -328,10 +590,13 @@
             }
         }
 
-        // Test Modu
         function generateQuiz() {
             const allWords = [];
-            appData.kategoriler.forEach(c => allWords.push(...c.kelimeler));
+            if (appData.kategoriler) {
+                appData.kategoriler.forEach(c => {
+                    if (c.kelimeler) allWords.push(...c.kelimeler);
+                });
+            }
             if (allWords.length < 4) return;
 
             const targetWord = allWords[Math.floor(Math.random() * allWords.length)];
@@ -339,7 +604,6 @@
 
             document.getElementById('quiz-question').innerText = targetWord.fr;
 
-            // Yanlış şıkları seç
             const options = [targetWord.tr];
             while (options.length < 4) {
                 const randomWord = allWords[Math.floor(Math.random() * allWords.length)].tr;
@@ -347,8 +611,6 @@
                     options.push(randomWord);
                 }
             }
-
-            // Şıkları karıştır
             options.sort(() => Math.random() - 0.5);
 
             const optionsContainer = document.getElementById('quiz-options');
@@ -359,18 +621,18 @@
                 const btn = document.createElement('button');
                 btn.className = "w-full bg-slate-700 hover:bg-slate-600 text-slate-100 font-semibold py-3 px-4 rounded-xl transition text-left border border-slate-600";
                 btn.innerText = opt;
-                btn.onclick = () => checkQuizAnswer(opt, btn);
+                btn.onclick = () => checkQuizAnswer(opt);
                 optionsContainer.appendChild(btn);
             });
         }
 
-        function checkQuizAnswer(selected, buttonEl) {
+        function checkQuizAnswer(selected) {
             const feedback = document.getElementById('quiz-feedback');
             feedback.classList.remove('hidden');
 
             if (selected === currentQuizCorrectAnswer) {
                 feedback.className = "mt-4 p-3 rounded-xl text-center font-semibold bg-emerald-900/80 text-emerald-200 border border-emerald-700";
-                feedback.innerText = "Tebrikler! Doğru cevap (+10 XP)";
+                feedback.innerText = "Doğru cevap! (+10 XP)";
                 addXP(10);
                 speakText(document.getElementById('quiz-question').innerText);
             } else {
@@ -383,13 +645,20 @@
             }, 2000);
         }
 
-        // Sözlük Modu
         function renderDictionary(filter = '') {
             const list = document.getElementById('dict-list');
             list.innerHTML = '';
 
             const allWords = [];
-            appData.kategoriler.forEach(c => allWords.push(...c.kelimeler));
+            if (appData.kategoriler) {
+                appData.kategoriler.forEach(c => {
+                    if (c.kelimeler) allWords.push(...c.kelimeler);
+                });
+            }
+
+            verbData.forEach(v => {
+                allWords.push({ fr: v.infinitive, tr: v.meaning, phonetic: 'fiil' });
+            });
 
             const filtered = allWords.filter(w => 
                 w.fr.toLowerCase().includes(filter.toLowerCase()) || 
@@ -418,18 +687,16 @@
             renderDictionary(query);
         }
 
-        // Sekme Değişimi
         function switchTab(tab) {
-            ['cards', 'quiz', 'dictionary'].forEach(t => {
+            ['cards', 'verbs', 'quiz', 'dictionary'].forEach(t => {
                 document.getElementById(`section-${t}`).classList.add('hidden');
-                document.getElementById(`tab-${t}`).className = "tab-btn bg-slate-800 text-slate-400 hover:text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2";
+                document.getElementById(`tab-${t}`).className = "tab-btn bg-slate-800 text-slate-400 hover:text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2 whitespace-nowrap";
             });
 
             document.getElementById(`section-${tab}`).classList.remove('hidden');
-            document.getElementById(`tab-${tab}`).className = "tab-btn bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2";
+            document.getElementById(`tab-${tab}`).className = "tab-btn bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2 whitespace-nowrap";
         }
     </script>
 </body>
 </html>
 
- 
