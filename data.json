@@ -1,41 +1,206 @@
 {
-  "gunun_kelimesi": {
-    "fr": "Apprendre",
-    "tr": "Öğrenmek",
-    "example": "J'aime apprendre le français tous les jours."
-  },
-  "kategoriler": [
-    {
-      "id": "selamlasma",
-      "isim": "Selamlaşma & Tanışma",
-      "kelimeler": [
-        { "fr": "Bonjour", "tr": "Merhaba / İyi günler", "phonetic": "bonjur", "example_fr": "Bonjour, comment allez-vous?", "example_tr": "Merhaba, nasılsınız?" },
-        { "fr": "Bonsoir", "tr": "İyi akşamlar", "phonetic": "bonsuar", "example_fr": "Bonsoir tout le monde.", "example_tr": "Herkese iyi akşamlar." },
-        { "fr": "Comment vous vous appelez?", "tr": "Adınız nedir?", "phonetic": "koman vu vuz aple", "example_fr": "Bonjour, comment vous vous appelez?", "example_tr": "Merhaba, adınız nedir?" },
-        { "fr": "Je m'appelle...", "tr": "Benim adım...", "phonetic": "jö mapel", "example_fr": "Je m'appelle Ahsen.", "example_tr": "Benim adım Ahsen." },
-        { "fr": "Enchanté", "tr": "Memnun oldum", "phonetic": "anşante", "example_fr": "Enchanté de vous rencontrer.", "example_tr": "Sizinle tanıştığıma memnun oldum." }
-      ]
-    },
-    {
-      "id": "gunluk",
-      "isim": "Günlük Konuşma & İfadeler",
-      "kelimeler": [
-        { "fr": "S'il vous plaît", "tr": "Lütfen", "phonetic": "sil vu ple", "example_fr": "Un café, s'il vous plaît.", "example_tr": "Bir kahve, lütfen." },
-        { "fr": "Merci beaucoup", "tr": "Çok teşekkür ederim", "phonetic": "mersi boku", "example_fr": "Merci beaucoup pour votre aide.", "example_tr": "Yardımınız için çok teşekkür ederim." },
-        { "fr": "De rien", "tr": "Rica ederim", "phonetic": "dö ryan", "example_fr": "De rien, c'est un plaisir.", "example_tr": "Rica ederim, bir zevkti." },
-        { "fr": "Oui", "tr": "Evet", "phonetic": "vi", "example_fr": "Oui, c'est vrai.", "example_tr": "Evet, bu doğru." },
-        { "fr": "Non", "tr": "Hayır", "phonetic": "no", "example_fr": "Non, je ne sais pas.", "example_tr": "Hayır, bilmiyorum." }
-      ]
-    },
-    {
-      "id": "seyahat",
-      "isim": "Seyahat & Yönler",
-      "kelimeler": [
-        { "fr": "Où est...?", "tr": "... nerede?", "phonetic": "u e", "example_fr": "Où est la gare?", "example_tr": "Tren istasyonu nerede?" },
-        { "fr": "L'hôtel", "tr": "Otel", "phonetic": "lotel", "example_fr": "Où se trouve l'hôtel?", "example_tr": "Otel nerede bulunuyor?" },
-        { "fr": "Combien ça coûte?", "tr": "Bu ne kadar?", "phonetic": "kombiyan sa kut", "example_fr": "Excusez-moi, combien ça coûte?", "example_tr": "Affedersiniz, bu ne kadar?" },
-        { "fr": "L'aéroport", "tr": "Havalimanı", "phonetic": "laeropor", "example_fr": "Je vais à l'aéroport.", "example_tr": "Havalimanına gidiyorum." }
-      ]
-    }
-  ]
-} 
+"gunun_kelimesi": {
+"fr": "Apprendre",
+"tr": "Öğrenmek",
+"example": "J'aime apprendre de nouveaux mots chaque jour."
+},
+"kategoriler": [
+{
+"id": "selamlasma",
+"isim": "Selamlaşma ve Nezaket",
+"kelimeler": [
+{"fr": "Bonjour", "tr": "Merhaba / İyi günler", "phonetic": "bonjur", "example_fr": "Bonjour, comment allez-vous?", "example_tr": "Merhaba, nasılsınız?"},
+{"fr": "Bonsoir", "tr": "İyi akşamlar", "phonetic": "bonsuar", "example_fr": "Bonsoir tout le monde.", "example_tr": "Herkese iyi akşamlar."},
+{"fr": "Bonne nuit", "tr": "İyi geceler", "phonetic": "bon nüi", "example_fr": "Bonne nuit, fais de beaux rêves.", "example_tr": "İyi geceler, tatlı rüyalar."},
+{"fr": "Salut", "tr": "Selam / Hoşça kal", "phonetic": "salü", "example_fr": "Salut, ça va?", "example_tr": "Selam, nasıl gidiyor?"},
+{"fr": "Au revoir", "tr": "Hoşça kalın / Görüşürüz", "phonetic": "o rvuar", "example_fr": "Au revoir et à bientôt.", "example_tr": "Hoşça kalın ve yakında görüşmek üzere."},
+{"fr": "À bientôt", "tr": "Yakında görüşürüz", "phonetic": "a byanto", "example_fr": "À bientôt, mon ami.", "example_tr": "Yakında görüşürüz, dostum."},
+{"fr": "À demain", "tr": "Yarın görüşürüz", "phonetic": "a dömen", "example_fr": "À demain au bureau.", "example_tr": "Yarın ofiste görüşürüz."},
+{"fr": "Merci", "tr": "Teşekkürler", "phonetic": "mersi", "example_fr": "Merci pour votre aide.", "example_tr": "Yardımınız için teşekkürler."},
+{"fr": "Merci beaucoup", "tr": "Çok teşekkür ederim", "phonetic": "mersi boku", "example_fr": "Merci beaucoup pour ce cadeau.", "example_tr": "Bu hediye için çok teşekkür ederim."},
+{"fr": "De rien", "tr": "Rica ederim", "phonetic": "dö ryan", "example_fr": "De rien, c'est normal.", "example_tr": "Rica ederim, gayet normal."},
+{"fr": "Je vous en prie", "tr": "Rica ederim (Resmi)", "phonetic": "jö vuz an pri", "example_fr": "Je vous en prie, entrez.", "example_tr": "Rica ederim, buyrun girin."},
+{"fr": "S'il vous plaît", "tr": "Lütfen (Resmi)", "phonetic": "sil vu ple", "example_fr": "Un café, s'il vous plaît.", "example_tr": "Bir kahve, lütfen."},
+{"fr": "S'il te plaît", "tr": "Lütfen (Samimi)", "phonetic": "sil tö ple", "example_fr": "Passe-moi le sel, s'il te plaît.", "example_tr": "Tuzu uzatır mısın, lütfen."},
+{"fr": "Pardon", "tr": "Afedersiniz / Özür dilerim", "phonetic": "pardon", "example_fr": "Pardon, je suis en retard.", "example_tr": "Afedersiniz, geciktim."},
+{"fr": "Excusez-moi", "tr": "Bağışlayın / Afedersiniz", "phonetic": "eksküze mua", "example_fr": "Excusez-moi, où est la banque?", "example_tr": "Afedersiniz, banka nerede?"},
+{"fr": "Désolé", "tr": "Üzgünüm", "phonetic": "dezole", "example_fr": "Je suis désolé pour cette erreur.", "example_tr": "Bu hata için üzgünüm."},
+{"fr": "Enchanté", "tr": "Tanıştığıma memnun oldum", "phonetic": "anşante", "example_fr": "Enchanté de faire votre connaissance.", "example_tr": "Sizinle tanıştığıma memnun oldum."},
+{"fr": "Comment vous vous appelez?", "tr": "Adınız nedir?", "phonetic": "koman vu vuz aple", "example_fr": "Bonjour, comment vous vous appelez?", "example_tr": "Merhaba, adınız nedir?"},
+{"fr": "Comment tu t'appelles?", "tr": "Adın ne?", "phonetic": "koman tü tapel", "example_fr": "Comment tu t'appelles, mon petit?", "example_tr": "Adın ne, küçüğüm?"},
+{"fr": "Je m'appelle...", "tr": "Benim adım...", "phonetic": "jö mapel", "example_fr": "Je m'appelle Ahsen.", "example_tr": "Benim adım Ahsen."},
+{"fr": "Comment allez-vous?", "tr": "Nasılsınız?", "phonetic": "koman tale vu", "example_fr": "Bonjour monsieur, comment allez-vous?", "example_tr": "Merhaba beyefendi, nasılsınız?"},
+{"fr": "Ça va?", "tr": "Nasıl gidiyor?", "phonetic": "sa va", "example_fr": "Salut! Ça va bien et toi?", "example_tr": "Selam! İyi gidiyor, ya sen?"},
+{"fr": "Ça va bien", "tr": "İyiyim", "phonetic": "sa va byan", "example_fr": "Ça va bien, merci beaucoup.", "example_tr": "İyiyim, çok teşekkürler."},
+{"fr": "Comme ci, comme ça", "tr": "Şöyle böyle / İdare eder", "phonetic": "kom si kom sa", "example_fr": "Ça va comme ci, comme ça.", "example_tr": "Şöyle böyle gidiyor."},
+{"fr": "Bienvenue", "tr": "Hoş geldiniz", "phonetic": "byanvönü", "example_fr": "Bienvenue dans notre maison.", "example_tr": "Evimize hoş geldiniz."},
+{"fr": "Bonne journée", "tr": "İyi günler dilerim", "phonetic": "bon jurne", "example_fr": "Passez une très bonne journée.", "example_tr": "Çok güzel bir gün geçirin."},
+{"fr": "Bonne soirée", "tr": "İyi akşamlar dilerim", "phonetic": "bon suare", "example_fr": "Bonne soirée et bon appétit.", "example_tr": "İyi akşamlar ve afiyet olsun."},
+{"fr": "Bon appétit", "tr": "Afiyet olsun", "phonetic": "bon apeti", "example_fr": "Bon appétit à tous!", "example_tr": "Herkese afiyet olsun!"},
+{"fr": "Santé", "tr": "Şerefe / Sağlığınıza", "phonetic": "sante", "example_fr": "À votre santé!", "example_tr": "Sağlığınıza!"},
+{"fr": "Félicitations", "tr": "Tebrikler", "phonetic": "felisitasyon", "example_fr": "Félicitations pour ton succès.", "example_tr": "Başarın için tebrik ederim."},
+{"fr": "Bonne chance", "tr": "İyi şanslar", "phonetic": "bon şans", "example_fr": "Bonne chance pour ton examen.", "example_tr": "Sınavında iyi şanslar."},
+{"fr": "Joyeux anniversaire", "tr": "Doğum günün kutlu olsun", "phonetic": "juayöz aniverser", "example_fr": "Joyeux anniversaire, mon ami.", "example_tr": "Doğum günün kutlu olsun dostum."},
+{"fr": "Bonne année", "tr": "Mutlu yıllar", "phonetic": "bon ane", "example_fr": "Bonne année et bonne santé!", "example_tr": "Mutlu ve sağlıklı yıllar!"},
+{"fr": "À plus tard", "tr": "Sonra görüşürüz", "phonetic": "a plü tar", "example_fr": "Je dois partir, à plus tard.", "example_tr": "Gitmem gerek, sonra görüşürüz."},
+{"fr": "À tout à l'heure", "tr": "Az sonra görüşürüz", "phonetic": "a tut alör", "example_fr": "On mange ensemble, à tout à l'heure.", "example_tr": "Az sonra görüşürüz."},
+{"fr": "Prenez soin de vous", "tr": "Kendinize iyi bakın", "phonetic": "pröne suan dö vu", "example_fr": "Au revoir et prenez soin de vous.", "example_tr": "Hoşça kalın ve kendinize iyi bakın."},
+{"fr": "Avec plaisir", "tr": "Memnuniyetle", "phonetic": "avek plezir", "example_fr": "Je t'aiderai avec plaisir.", "example_tr": "Sana memnuniyetle yardım ederim."},
+{"fr": "Pas de problème", "tr": "Sorun değil", "phonetic": "pa dö problem", "example_fr": "Ne t'inquiète pas, pas de problème.", "example_tr": "Endişelenme, hiç sorun değil."},
+{"fr": "Ce n'est rien", "tr": "Önemli değil", "phonetic": "sö ne ryan", "example_fr": "Merci! Ce n'est rien du tout.", "example_tr": "Teşekkürler! Hiç önemli değil."},
+{"fr": "Bon voyage", "tr": "İyi yolculuklar", "phonetic": "bon vuayaj", "example_fr": "Bon voyage et amusez-vous bien.", "example_tr": "İyi yolculuklar ve iyi eğlenceler."}
+]
+},
+{
+"id": "sayilar_zaman",
+"isim": "Sayılar, Zaman ve Tarih",
+"kelimeler": [
+{"fr": "Zéro", "tr": "Sıfır", "phonetic": "zero", "example_fr": "Le score est de zéro à zéro.", "example_tr": "Skor sıfıra sıfır."},
+{"fr": "Un", "tr": "Bir", "phonetic": "en", "example_fr": "J'ai un livre intéressant.", "example_tr": "İlginç bir kitabım var."},
+{"fr": "Deux", "tr": "İki", "phonetic": "dö", "example_fr": "Il a deux frères.", "example_tr": "Onun iki erkek kardeşi var."},
+{"fr": "Trois", "tr": "Üç", "phonetic": "trua", "example_fr": "Nous restons trois jours ici.", "example_tr": "Burada üç gün kalıyoruz."},
+{"fr": "Quatre", "tr": "Dört", "phonetic": "katr", "example_fr": "La table a quatre pieds.", "example_tr": "Masanın dört ayağı var."},
+{"fr": "Cinq", "tr": "Beş", "phonetic": "senk", "example_fr": "Il est cinq heures.", "example_tr": "Saat beş."},
+{"fr": "Six", "tr": "Altı", "phonetic": "sis", "example_fr": "J'achète six pommes.", "example_tr": "Altı elma alıyorum."},
+{"fr": "Sept", "tr": "Yedi", "phonetic": "set", "example_fr": "Il y a sept jours dans une semaine.", "example_tr": "Bir haftada yedi gün vardır."},
+{"fr": "Huit", "tr": "Sekiz", "phonetic": "üit", "example_fr": "Le cours commence à huit heures.", "example_tr": "Ders saat sekizde başlıyor."},
+{"fr": "Neuf", "tr": "Dokuz", "phonetic": "nöf", "example_fr": "Il a neuf ans.", "example_tr": "O dokuz yaşında."},
+{"fr": "Dix", "tr": "On", "phonetic": "dis", "example_fr": "Comptez jusqu'à dix.", "example_tr": "Ona kadar sayın."},
+{"fr": "Onze", "tr": "On bir", "phonetic": "onz", "example_fr": "Le train part à onze heures.", "example_tr": "Tren saat on birde kalkıyor."},
+{"fr": "Douze", "tr": "On iki", "phonetic": "duz", "example_fr": "Une douzaine d'œufs.", "example_tr": "Bir düzine yumurta."},
+{"fr": "Treize", "tr": "On üç", "phonetic": "trez", "example_fr": "Le numéro treize.", "example_tr": "On üç numarası."},
+{"fr": "Quatorze", "tr": "On dört", "phonetic": "katorz", "example_fr": "Le quatorze juillet.", "example_tr": "On dört Temmuz."},
+{"fr": "Quinze", "tr": "On beş", "phonetic": "kenz", "example_fr": "Je reviens dans quinze minutes.", "example_tr": "On beş dakika içinde dönüyorum."},
+{"fr": "Vingt", "tr": "Yirmi", "phonetic": "van", "example_fr": "Il y a vingt étudiants en classe.", "example_tr": "Sınıfta yirmi öğrenci var."},
+{"fr": "Trente", "tr": "Otuz", "phonetic": "trant", "example_fr": "Le mois a trente jours.", "example_tr": "Ay otuz gündür."},
+{"fr": "Quarante", "tr": "Kırk", "phonetic": "karant", "example_fr": "Il a environ quarante ans.", "example_tr": "Yaklaşık kırk yaşlarında."},
+{"fr": "Cinquante", "tr": "Elli", "phonetic": "senkant", "example_fr": "La vitesse est limitée à cinquante.", "example_tr": "Hız elli ile sınırlandırılmıştır."},
+{"fr": "Cent", "tr": "Yüz", "phonetic": "san", "example_fr": "Ce livre coûte cent euros.", "example_tr": "Bu kitap yüz avro."},
+{"fr": "Mille", "tr": "Bin", "phonetic": "mil", "example_fr": "Une ville de dix mille habitants.", "example_tr": "On bin nüfuslu bir şehir."},
+{"fr": "Aujourd'hui", "tr": "Bugün", "phonetic": "ojurdui", "example_fr": "Aujourd'hui, il fait beau.", "example_tr": "Bugün hava güzel."},
+{"fr": "Hier", "tr": "Dün", "phonetic": "iyer", "example_fr": "Hier soir, nous sommes allés au cinéma.", "example_tr": "Dün akşam sinemaya gittik."},
+{"fr": "Demain", "tr": "Yarın", "phonetic": "dömen", "example_fr": "Demain matin, je travaille.", "example_tr": "Yarın sabah çalışıyorum."},
+{"fr": "Maintenant", "tr": "Şimdi", "phonetic": "mentnan", "example_fr": "Que fais-tu maintenant?", "example_tr": "Şimdi ne yapıyorsun?"},
+{"fr": "Toujours", "tr": "Her zaman", "phonetic": "tujur", "example_fr": "Il est toujours à l'heure.", "example_tr": "O her zaman tam vaktindedir."},
+{"fr": "Jamais", "tr": "Asla / Hiç", "phonetic": "jame", "example_fr": "Je ne bois jamais de café le soir.", "example_tr": "Akşamları asla kahve içmem."},
+{"fr": "Parfois", "tr": "Bazen", "phonetic": "parfua", "example_fr": "Parfois, je lis en français.", "example_tr": "Bazen Fransızca okurum."},
+{"fr": "Le matin", "tr": "Sabah", "phonetic": "lö maten", "example_fr": "Le matin, je bois du thé.", "example_tr": "Sabahları çay içerim."},
+{"fr": "L'après-midi", "tr": "Öğleden sonra", "phonetic": "lapre midi", "example_fr": "On se voit cet après-midi.", "example_tr": "Bu öğleden sonra görüşürüz."},
+{"fr": "Le soir", "tr": "Akşam", "phonetic": "lö suar", "example_fr": "Le soir, nous dînons en famille.", "example_tr": "Akşamları ailece akşam yemeği yeriz."},
+{"fr": "La nuit", "tr": "Gece", "phonetic": "la nüi", "example_fr": "La nuit est très calme.", "example_tr": "Gece çok sakin."},
+{"fr": "Lundi", "tr": "Pazartesi", "phonetic": "lündi", "example_fr": "Le cours commence lundi.", "example_tr": "Ders pazartesi başlıyor."},
+{"fr": "Mardi", "tr": "Salı", "phonetic": "mardi", "example_fr": "Mardi, j'ai une réunion.", "example_tr": "Salı günü bir toplantım var."},
+{"fr": "Mercredi", "tr": "Çarşamba", "phonetic": "merkrödi", "example_fr": "Mercredi est le milieu de la semaine.", "example_tr": "Çarşamba haftanın ortasıdır."},
+{"fr": "Jeudi", "tr": "Perşembe", "phonetic": "jodi", "example_fr": "Je fais du sport le jeudi.", "example_tr": "Perşembe günleri spor yaparım."},
+{"fr": "Vendredi", "tr": "Cuma", "phonetic": "vandrödı", "example_fr": "Vendredi soir, c'est le week-end.", "example_tr": "Cuma akşamı hafta sonu başlar."},
+{"fr": "Samedi", "tr": "Cumartesi", "phonetic": "samdi", "example_fr": "Samedi, nous allons au marché.", "example_tr": "Cumartesi günü pazara gidiyoruz."},
+{"fr": "Dimanche", "tr": "Pazar", "phonetic": "dimanş", "example_fr": "Le dimanche, je me repose.", "example_tr": "Pazar günleri dinlenirim."}
+]
+},
+{
+"id": "yiyecek_icecek",
+"isim": "Yiyecek ve İçecekler",
+"kelimeler": [
+{"fr": "L'eau", "tr": "Su", "phonetic": "lo", "example_fr": "Je bois beaucoup d'eau.", "example_tr": "Çokça su içerim."},
+{"fr": "Le pain", "tr": "Ekmek", "phonetic": "lö pan", "example_fr": "La baguette est le pain traditionnel.", "example_tr": "Baguette geleneksel ekmektir."},
+{"fr": "Le fromage", "tr": "Peynir", "phonetic": "lö fromaj", "example_fr": "La France produit du fromage.", "example_tr": "Fransa peynir üretir."},
+{"fr": "Le lait", "tr": "Süt", "phonetic": "lö le", "example_fr": "Il boit du lait chaud.", "example_tr": "Sıcak süt içer."},
+{"fr": "Le café", "tr": "Kahve", "phonetic": "lö kafe", "example_fr": "Je prends un café noir.", "example_tr": "Sade bir kahve alıyorum."},
+{"fr": "Le thé", "tr": "Çay", "phonetic": "lö te", "example_fr": "Voulez-vous du thé vert?", "example_tr": "Yeşil çay ister misiniz?"},
+{"fr": "Le sucre", "tr": "Şeker", "phonetic": "lö sükr", "example_fr": "Un café sans sucre, s'il vous plaît.", "example_tr": "Şekersiz bir kahve, lütfen."},
+{"fr": "Le sel", "tr": "Tuz", "phonetic": "lö sel", "example_fr": "Ajoutez une pincée de sel.", "example_tr": "Bir çimdik tuz ekleyin."},
+{"fr": "Le beurre", "tr": "Tereyağı", "phonetic": "lö bör", "example_fr": "Du pain avec du beurre.", "example_tr": "Tereyağlı ekmek."},
+{"fr": "La pomme", "tr": "Elma", "phonetic": "la pom", "example_fr": "Une pomme rouge et sucrée.", "example_tr": "Kırmızı ve tatlı bir elma."},
+{"fr": "La banane", "tr": "Muz", "phonetic": "la banan", "example_fr": "Les singes aiment la banane.", "example_tr": "Maymunlar muz sever."},
+{"fr": "L'orange", "tr": "Portakal", "phonetic": "loranj", "example_fr": "L'orange est riche en vitamine C.", "example_tr": "Portakal C vitamini bakımından zengindir."},
+{"fr": "Le citron", "tr": "Limon", "phonetic": "lö sitron", "example_fr": "Le citron est très acide.", "example_tr": "Limon çok ekşidir."},
+{"fr": "La fraise", "tr": "Çilek", "phonetic": "la frez", "example_fr": "Une tarte aux fraises.", "example_tr": "Çilekli bir turta."},
+{"fr": "La tomate", "tr": "Domates", "phonetic": "la tomat", "example_fr": "Une salade de tomates.", "example_tr": "Domates salatası."},
+{"fr": "La pomme de terre", "tr": "Patates", "phonetic": "la pom dö ter", "example_fr": "Des frites de pommes de terre.", "example_tr": "Patates kızartması."},
+{"fr": "Le poulet", "tr": "Tavuk eti", "phonetic": "lö pule", "example_fr": "Du poulet rôti.", "example_tr": "Fırında kızarmış tavuk."},
+{"fr": "La viande", "tr": "Et", "phonetic": "la vyand", "example_fr": "Je préfère la viande bien cuite.", "example_tr": "İyi pişmiş eti tercih ederim."},
+{"fr": "Le poisson", "tr": "Balık", "phonetic": "lö puason", "example_fr": "Le poisson est très sain.", "example_tr": "Balık çok sağlıklıdır."},
+{"fr": "L'œuf", "tr": "Yumurta", "phonetic": "löf", "example_fr": "Deux œufs au petit-déjeuner.", "example_tr": "Kahvaltıda iki yumurta."},
+{"fr": "Le riz", "tr": "Pirinç / Pilav", "phonetic": "lö ri", "example_fr": "Du riz blanc avec des légumes.", "example_tr": "Sebzeli beyaz pilav."},
+{"fr": "Les pâtes", "tr": "Makarna", "phonetic": "le pat", "example_fr": "Les pâtes à la sauce tomate.", "example_tr": "Domates soslu makarna."},
+{"fr": "La soupe", "tr": "Çorba", "phonetic": "la sup", "example_fr": "Une soupe chaude en hiver.", "example_tr": "Kışın sıcak bir çorba."},
+{"fr": "Le gâteau", "tr": "Kek / Pasta", "phonetic": "lö gato", "example_fr": "Un délicieux gâteau au chocolat.", "example_tr": "Nefis bir çikolatalı pasta."},
+{"fr": "Le chocolat", "tr": "Çikolata", "phonetic": "lö şokola", "example_fr": "J'adore le chocolat noir.", "example_tr": "Bitter çikolatayı çok severim."}
+]
+},
+{
+"id": "ev_esyalar",
+"isim": "Ev ve Günlük Eşyalar",
+"kelimeler": [
+{"fr": "La maison", "tr": "Ev", "phonetic": "la mezon", "example_fr": "Notre maison est près du parc.", "example_tr": "Evimiz parkın yakınındadır."},
+{"fr": "L'appartement", "tr": "Daire", "phonetic": "lapartöman", "example_fr": "Un bel appartement en ville.", "example_tr": "Şehirde güzel bir daire."},
+{"fr": "La chambre", "tr": "Oda", "phonetic": "la şanbr", "example_fr": "Ma chambre est lumineuse.", "example_tr": "Odam aydınlıktır."},
+{"fr": "Le salon", "tr": "Salon", "phonetic": "lö salon", "example_fr": "Nous sommes dans le salon.", "example_tr": "Salondayız."},
+{"fr": "La cuisine", "tr": "Mutfak", "phonetic": "la küizin", "example_fr": "La cuisine est propre.", "example_tr": "Mutfak temizdir."},
+{"fr": "La salle de bain", "tr": "Banyo", "phonetic": "la sal dö ban", "example_fr": "Prendre une douche dans la salle de bain.", "example_tr": "Banyoda duş almak."},
+{"fr": "La porte", "tr": "Kapı", "phonetic": "la port", "example_fr": "Fermez la porte, s'il vous plaît.", "example_tr": "Lütfen kapıyı kapatın."},
+{"fr": "La fenêtre", "tr": "Pencere", "phonetic": "la fönetr", "example_fr": "Ouvrez la fenêtre.", "example_tr": "Pencereyi açın."},
+{"fr": "Le lit", "tr": "Yatak", "phonetic": "lö li", "example_fr": "Un grand lit confortable.", "example_tr": "Büyük ve rahat bir yatak."},
+{"fr": "La table", "tr": "Masa", "phonetic": "la tabl", "example_fr": "Posez le livre sur la table.", "example_tr": "Kitabı masaya koyun."},
+{"fr": "La chaise", "tr": "Sandalye", "phonetic": "la şez", "example_fr": "Asseyez-vous sur cette chaise.", "example_tr": "Bu sandalyeye oturun."},
+{"fr": "L'armoire", "tr": "Dolap", "phonetic": "larmuar", "example_fr": "Les vêtements sont dans l'armoire.", "example_tr": "Giysiler dolapta."},
+{"fr": "La clé", "tr": "Anahtar", "phonetic": "la kle", "example_fr": "J'ai trouvé mes clés.", "example_tr": "Anahtarlarımı buldum."},
+{"fr": "Le téléphone", "tr": "Telefon", "phonetic": "lö telefon", "example_fr": "Mon téléphone sonne.", "example_tr": "Telefonum çalıyor."},
+{"fr": "L'ordinateur", "tr": "Bilgisayar", "phonetic": "lordinatör", "example_fr": "Travailler sur l'ordinateur.", "example_tr": "Bilgisayarda çalışmak."},
+{"fr": "La télévision", "tr": "Televizyon", "phonetic": "la televizyon", "example_fr": "Regarder la télévision.", "example_tr": "Televizyon izlemek."},
+{"fr": "Le livre", "tr": "Kitap", "phonetic": "lö livr", "example_fr": "Lire un livre passionnant.", "example_tr": "Sürükleyici bir kitap okumak."},
+{"fr": "Le cahier", "tr": "Defter", "phonetic": "lö kaye", "example_fr": "Écrire dans le cahier.", "example_tr": "Deftere yazmak."},
+{"fr": "Le stylo", "tr": "Kalem", "phonetic": "lö stilo", "example_fr": "Prête-moi un stylo.", "example_tr": "Bana bir kalem ödünç ver."},
+{"fr": "Le sac", "tr": "Çanta", "phonetic": "lö sak", "example_fr": "Un grand sac de voyage.", "example_tr": "Büyük bir seyahat çantası."}
+]
+},
+{
+"id": "sehir_ulasim",
+"isim": "Şehir ve Ulaşım",
+"kelimeler": [
+{"fr": "La ville", "tr": "Şehir", "phonetic": "la vil", "example_fr": "Paris est une grande ville.", "example_tr": "Paris büyük bir şehirdir."},
+{"fr": "La rue", "tr": "Sokak / Cadde", "phonetic": "la rü", "example_fr": "Traverser la rue.", "example_tr": "Sokağı geçmek."},
+{"fr": "La gare", "tr": "Tren istasyonu", "phonetic": "la gar", "example_fr": "Le train arrive à la gare.", "example_tr": "Tren istasyona varıyor."},
+{"fr": "L'aéroport", "tr": "Havalimanı", "phonetic": "laeropor", "example_fr": "Aller à l'aéroport en taxi.", "example_tr": "Havalimanına taksiyle gitmek."},
+{"fr": "Le métro", "tr": "Metro", "phonetic": "lö metro", "example_fr": "Prendre le métro à Paris.", "example_tr": "Paris'te metroya binmek."},
+{"fr": "Le bus", "tr": "Otobüs", "phonetic": "lö büs", "example_fr": "Attendre le bus.", "example_tr": "Otobüsü beklemek."},
+{"fr": "Le train", "tr": "Tren", "phonetic": "lö tran", "example_fr": "Voyager en train.", "example_tr": "Trenle seyahat etmek."},
+{"fr": "La voiture", "tr": "Araba", "phonetic": "la vuatür", "example_fr": "Conduire une voiture.", "example_tr": "Araba sürmek."},
+{"fr": "Le vélo", "tr": "Bisiklet", "phonetic": "lö velo", "example_fr": "Faire du vélo le weekend.", "example_tr": "Hafta sonu bisiklete binmek."},
+{"fr": "L'hôtel", "tr": "Otel", "phonetic": "lotel", "example_fr": "Réserver une chambre d'hôtel.", "example_tr": "Otel odası ayırtmak."},
+{"fr": "Le restaurant", "tr": "Restoran", "phonetic": "lö restoran", "example_fr": "Dîner au restaurant.", "example_tr": "Restoranda akşam yemeği yemek."},
+{"fr": "La pharmacie", "tr": "Eczane", "phonetic": "la farmasi", "example_fr": "Acheter un médicament à la pharmacie.", "example_tr": "Eczaneden ilaç almak."},
+{"fr": "La banque", "tr": "Banka", "phonetic": "la bank", "example_fr": "Où est la banque?", "example_tr": "Banka nerede?"},
+{"fr": "Tout droit", "tr": "Dümdüz", "phonetic": "tu drua", "example_fr": "Allez tout droit.", "example_tr": "Dümdüz gidin."},
+{"fr": "À droite", "tr": "Sağa / Sağda", "phonetic": "a druat", "example_fr": "Tournez à droite.", "example_tr": "Sağa dönün."},
+{"fr": "À gauche", "tr": "Sola / Solda", "phonetic": "a goş", "example_fr": "La boutique est à gauche.", "example_tr": "Mağaza solda."}
+]
+},
+{
+"id": "temel_fiiller",
+"isim": "Temel Fiiller",
+"kelimeler": [
+{"fr": "Être", "tr": "Olmak", "phonetic": "etr", "example_fr": "Je suis très content.", "example_tr": "Çok memnunum."},
+{"fr": "Avoir", "tr": "Sahip olmak", "phonetic": "avuar", "example_fr": "J'ai un projet.", "example_tr": "Bir projem var."},
+{"fr": "Faire", "tr": "Yapmak", "phonetic": "fer", "example_fr": "Que fais-tu?", "example_tr": "Ne yapıyorsun?"},
+{"fr": "Aller", "tr": "Gitmek", "phonetic": "ale", "example_fr": "Je vais à l'école.", "example_tr": "Okula gidiyorum."},
+{"fr": "Venir", "tr": "Gelmek", "phonetic": "vönir", "example_fr": "Il vient demain.", "example_tr": "O yarın geliyor."},
+{"fr": "Voir", "tr": "Görmek", "phonetic": "vuar", "example_fr": "Je vois un oiseau.", "example_tr": "Bir kuş görüyorum."},
+{"fr": "Savoir", "tr": "Bilmek", "phonetic": "savuar", "example_fr": "Je sais parler français.", "example_tr": "Fransızca konuşmayı biliyorum."},
+{"fr": "Pouvoir", "tr": "Yapabilmek", "phonetic": "puvuar", "example_fr": "Je peux vous aider.", "example_tr": "Size yardım edebilirim."},
+{"fr": "Vouloir", "tr": "İstemek", "phonetic": "vuluar", "example_fr": "Je veux apprendre.", "example_tr": "Öğrenmek istiyorum."},
+{"fr": "Parler", "tr": "Konuşmak", "phonetic": "parle", "example_fr": "Parlez-vous français?", "example_tr": "Fransızca konuşuyor musunuz?"},
+{"fr": "Aimer", "tr": "Sevmek", "phonetic": "eme", "example_fr": "J'aime la musique.", "example_tr": "Müziği severim."},
+{"fr": "Manger", "tr": "Yemek yemek", "phonetic": "manje", "example_fr": "Manger une pomme.", "example_tr": "Bir elma yemek."},
+{"fr": "Boire", "tr": "İçmek", "phonetic": "buar", "example_fr": "Boire de l'eau.", "example_tr": "Su içmek."},
+{"fr": "Dormir", "tr": "Uyumak", "phonetic": "dormir", "example_fr": "Dormir huit heures.", "example_tr": "Sekiz saat uyumak."},
+{"fr": "Lire", "tr": "Okumak", "phonetic": "lir", "example_fr": "Lire un livre.", "example_tr": "Kitap okumak."},
+{"fr": "Écrire", "tr": "Yazmak", "phonetic": "ekrir", "example_fr": "Écrire un message.", "example_tr": "Bir mesaj yazmak."},
+{"fr": "Travailler", "tr": "Çalışmak", "phonetic": "travaye", "example_fr": "Travailler dur.", "example_tr": "Sıkı çalışmak."},
+{"fr": "Acheter", "tr": "Satın almak", "phonetic": "aşte", "example_fr": "Acheter du pain.", "example_tr": "Ekmek satın almak."},
+{"fr": "Comprendre", "tr": "Anlamak", "phonetic": "konprandr", "example_fr": "Je comprends tout.", "example_tr": "Her şeyi anlıyorum."},
+{"fr": "Apprendre", "tr": "Öğrenmek", "phonetic": "aprandr", "example_fr": "Apprendre des mots.", "example_tr": "Kelime öğrenmek."}
+]
+}
+]
+}
